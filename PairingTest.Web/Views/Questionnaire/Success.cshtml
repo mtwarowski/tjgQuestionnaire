@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Success";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="alert alert-success">
+                    <strong>Congratulation!!!</strong>
+                    <br/>
+                    You have successfuly submit a form.
+                    <br />
+                    @Html.ActionLink("Do it Again", "Index", null, new { @class = "btn btn-success", @role = "button" })              
+            </div>
+        </div>
+    </div>
+</div>

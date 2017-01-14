@@ -1,0 +1,29 @@
+﻿@model PairingTest.Web.Models.QuestionnaireWithAnswerViewModel
+@{
+    ViewBag.Title = Model.QuestionnaireTitle;
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            @using (Html.BeginForm("Questionnaire", "Questionnaire", FormMethod.Post))
+            {
+                <h2>@Model.QuestionnaireTitle</h2>
+                @Html.HiddenFor(model => model.QuestionnaireTitle)
+                <hr />
+                for (var i = 0; i < Model.QuestionAnswers.Count; i++)
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.QuestionAnswers[i].AnswereText, Model.QuestionAnswers[i].QuestionText, new { @class = "control-label" })
+                        @Html.HiddenFor(model => model.QuestionAnswers[i].QuestionText)
+
+                        @Html.TextBoxFor(model => model.QuestionAnswers[i].AnswereText, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.QuestionAnswers[i].AnswereText, "", new { @class = "text-danger" })
+                    </div>
+                }
+                <button type="submit" name="submitQuestionnaire" class="btn btn-default">Send Answers</button>
+            }
+        </div>
+    </div>
+</div>
